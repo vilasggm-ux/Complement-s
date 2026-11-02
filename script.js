@@ -49,7 +49,11 @@ const pickupLines = [
     {
         question: "Are you a camera? 📸",
         answer: "Because every time I see you, I smile. 😊"
-    }
+    },
+   {
+       question: "Are you a bank loan?",
+       answer: "Because you’ve got my interest."
+   }
 ];
 
 
