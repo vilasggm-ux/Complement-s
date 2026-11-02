@@ -1,7 +1,6 @@
 /* =====================================================
    COMPLIMENT DATA
 ===================================================== */
-
 const compliments = {
     badass: [
         "{name}, you don't chase attention — attention notices you first. 😎",
