@@ -1,0 +1,727 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+/* =========================
+   RESET & VARIABLES
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #0b0a08;
+    --cream: #f5f0e6;
+    --muted: #aaa294;
+    --gold: #c9a96e;
+    --gold-light: #e4cf9a;
+    --border: rgba(218, 190, 132, 0.18);
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--cream);
+    font-family: "Inter", sans-serif;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(130, 96, 43, 0.16),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 85% 85%,
+            rgba(102, 72, 28, 0.13),
+            transparent 35%
+        ),
+        #0b0a08;
+
+    transition: 1s ease;
+}
+
+body.revealed .background {
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(166, 124, 58, 0.22),
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at 15% 80%,
+            rgba(86, 62, 25, 0.16),
+            transparent 40%
+        ),
+        #090806;
+}
+
+
+/* =========================
+   GLOW EFFECTS
+========================= */
+
+.glow {
+    position: fixed;
+
+    width: 420px;
+    height: 420px;
+
+    border-radius: 50%;
+    filter: blur(130px);
+
+    opacity: 0.1;
+    pointer-events: none;
+
+    z-index: -2;
+
+    transition: 1s ease;
+}
+
+.glow-one {
+    background: #b58a45;
+
+    top: -160px;
+    left: -140px;
+
+    animation: floatOne 12s ease-in-out infinite;
+}
+
+.glow-two {
+    background: #8e682f;
+
+    bottom: -180px;
+    right: -150px;
+
+    animation: floatTwo 14s ease-in-out infinite;
+}
+
+body.revealed .glow {
+    opacity: 0.22;
+}
+
+
+@keyframes floatOne {
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(70px, 50px);
+    }
+}
+
+@keyframes floatTwo {
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(-70px, -40px);
+    }
+}
+
+
+/* =========================
+   MAIN LAYOUT
+========================= */
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 50px 25px;
+
+    position: relative;
+}
+
+
+/* =========================
+   SCREEN SYSTEM
+========================= */
+
+.screen {
+    display: none;
+
+    width: 100%;
+    max-width: 580px;
+
+    text-align: center;
+
+    opacity: 0;
+    transform: translateY(20px);
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+}
+
+.screen.active {
+    display: block;
+
+    opacity: 1;
+    transform: translateY(0);
+
+    animation: screenEnter 0.6s ease;
+}
+
+@keyframes screenEnter {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   BRAND
+========================= */
+
+.brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 12px;
+
+    color: var(--gold);
+
+    font-size: 0.68rem;
+    font-weight: 500;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 22px;
+}
+
+
+/* =========================
+   HEADINGS
+========================= */
+
+h1 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    line-height: 1;
+
+    font-weight: 600;
+
+    letter-spacing: -0.5px;
+
+    margin: 0 auto 18px;
+}
+
+
+/* =========================
+   SUBTITLE
+========================= */
+
+.subtitle {
+    max-width: 430px;
+
+    margin: 0 auto 28px;
+
+    color: var(--muted);
+
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+
+/* =========================
+   FORM CARD
+========================= */
+
+.card {
+    text-align: left;
+
+    padding: 28px 34px;
+
+    border-radius: 6px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 250, 238, 0.065),
+            rgba(255, 250, 238, 0.025)
+        );
+
+    border: 1px solid var(--border);
+
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+    backdrop-filter: blur(18px);
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+label {
+    display: block;
+
+    color: var(--gold-light);
+
+    font-size: 0.68rem;
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
+}
+
+input,
+select {
+    width: 100%;
+
+    padding: 14px 0;
+    margin-bottom: 24px;
+
+    background: transparent;
+
+    border: none;
+    border-bottom: 1px solid rgba(218, 190, 132, 0.22);
+
+    outline: none;
+
+    color: var(--cream);
+
+    font-family: "Inter", sans-serif;
+    font-size: 0.95rem;
+
+    transition: 0.3s ease;
+}
+
+input::placeholder {
+    color: #70695f;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--gold);
+}
+
+select {
+    cursor: pointer;
+}
+
+select option {
+    background: #14110c;
+    color: var(--cream);
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+    border: none;
+
+    font-family: "Inter", sans-serif;
+
+    cursor: pointer;
+
+    outline: none;
+
+    transition: all 0.3s ease;
+}
+
+
+/* Main compliment button */
+
+.compliment-main-btn {
+    width: 100%;
+
+    padding: 16px;
+
+    background: var(--gold);
+    color: #100e09;
+
+    border-radius: 2px;
+
+    font-size: 0.76rem;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+}
+
+.compliment-main-btn:hover {
+    background: var(--gold-light);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 15px 35px rgba(201, 169, 110, 0.18);
+}
+
+
+/* OR DIVIDER */
+
+.button-divider {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 18px 0;
+
+    color: var(--muted);
+
+    font-size: 0.65rem;
+
+    letter-spacing: 2px;
+}
+
+.button-divider::before,
+.button-divider::after {
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background: rgba(218, 190, 132, 0.12);
+}
+
+
+/* Pickup main button */
+
+.pickup-main-btn {
+    width: 100%;
+
+    padding: 16px;
+
+    background: transparent;
+
+    color: var(--cream);
+
+    border: 1px solid var(--border);
+
+    border-radius: 2px;
+
+    font-size: 0.76rem;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+}
+
+.pickup-main-btn:hover {
+    background: rgba(201, 169, 110, 0.1);
+
+    border-color: var(--gold);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   PICKUP QUESTION SCREEN
+========================= */
+
+.pickup-screen {
+    max-width: 650px;
+}
+
+.pickup-screen h1 {
+    max-width: 650px;
+
+    font-size: clamp(2.5rem, 5vw, 4rem);
+
+    margin-bottom: 18px;
+}
+
+.pickup-options {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 16px;
+
+    margin-top: 30px;
+}
+
+.pickup-options button {
+    min-width: 150px;
+
+    padding: 16px 30px;
+
+    background: transparent;
+
+    color: var(--cream);
+
+    border: 1px solid var(--border);
+
+    border-radius: 2px;
+
+    font-size: 0.72rem;
+    font-weight: 600;
+
+    letter-spacing: 2px;
+}
+
+.pickup-options button:hover {
+    background: var(--gold);
+
+    color: #100e09;
+
+    border-color: var(--gold);
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================
+   REVEAL SCREEN
+========================= */
+
+.compliment-screen {
+    max-width: 720px;
+}
+
+.sparkle {
+    color: var(--gold);
+
+    font-size: 1.5rem;
+
+    margin-bottom: 24px;
+
+    animation: sparkle 3s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: rotate(0deg) scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: rotate(45deg) scale(1.2);
+    }
+}
+
+.hello {
+    color: var(--gold);
+
+    font-size: 0.7rem;
+
+    text-transform: uppercase;
+    letter-spacing: 4px;
+
+    margin-bottom: 24px;
+}
+
+
+/* =========================
+   COMPLIMENT CARD
+========================= */
+
+.compliment-card {
+    position: relative;
+
+    padding: 50px 45px;
+
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 250, 235, 0.035),
+            transparent
+        );
+
+    margin-bottom: 28px;
+}
+
+#complimentText {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+
+    font-weight: 600;
+
+    font-style: normal;
+
+    line-height: 1.25;
+
+    letter-spacing: -0.3px;
+
+    color: var(--cream);
+
+    max-width: 850px;
+
+    margin: 0 auto;
+
+    transition:
+        opacity 0.35s ease,
+        transform 0.35s ease;
+}
+
+
+.quote-mark {
+    position: absolute;
+
+    top: 5px;
+    left: 20px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 6rem;
+
+    color: rgba(201, 169, 110, 0.18);
+}
+
+.quote-mark.closing {
+    top: auto;
+    left: auto;
+
+    right: 20px;
+    bottom: -35px;
+}
+
+
+/* =========================
+   REVEAL BUTTONS
+========================= */
+
+.another-btn {
+    padding: 16px 38px;
+
+    background: var(--cream);
+
+    color: #100e09;
+
+    border-radius: 2px;
+
+    font-size: 0.72rem;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.another-btn:hover {
+    background: var(--gold-light);
+
+    transform: translateY(-2px);
+}
+
+.back-btn {
+    display: block;
+
+    margin: 20px auto 0;
+
+    padding: 8px 14px;
+
+    background: transparent;
+
+    color: var(--muted);
+
+    font-size: 0.72rem;
+
+    letter-spacing: 1px;
+}
+
+.back-btn:hover {
+    color: var(--cream);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .container {
+        min-height: 100vh;
+
+        padding: 40px 20px;
+    }
+
+    .brand {
+        margin-bottom: 20px;
+
+        letter-spacing: 3px;
+    }
+
+    h1 {
+        font-size: 3rem;
+
+        line-height: 1;
+    }
+
+    .subtitle {
+        margin-bottom: 26px;
+
+        font-size: 0.88rem;
+    }
+
+    .card {
+        padding: 25px 22px;
+    }
+
+    .pickup-options {
+        gap: 10px;
+    }
+
+    .pickup-options button {
+        min-width: 120px;
+
+        padding: 15px 20px;
+    }
+
+    .compliment-card {
+        padding: 45px 22px;
+    }
+
+    #complimentText {
+        font-size: 2rem;
+
+        line-height: 1.3;
+    }
+
+    .quote-mark {
+        font-size: 5rem;
+    }
+}

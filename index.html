@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Compliment Me ✨</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- BACKGROUND -->
+    <div class="background"></div>
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
+
+
+    <main class="container">
+
+        <!-- =========================
+             SCREEN 1: WELCOME
+        ========================== -->
+
+        <section id="welcomeScreen" class="screen active">
+
+            <div class="brand">
+                <span>✦</span>
+                COMPLIMENT ME
+                <span>✦</span>
+            </div>
+
+            <h1>
+                A little reminder of<br>
+                how amazing you are.
+            </h1>
+
+            <p class="subtitle">
+                Tell us who you are. We'll handle the rest.
+            </p>
+
+
+            <div class="card">
+
+                <label for="name">Your name</label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your name"
+                >
+
+
+                <label for="gender">Choose your vibe</label>
+
+                <select id="gender">
+
+                    <option value="">Select your vibe</option>
+
+                    <option value="badass">
+                        😎 Badass
+                    </option>
+
+                    <option value="diva">
+                        💅 Diva
+                    </option>
+
+                    <option value="neutral">
+                        ✨ Just Me
+                    </option>
+
+                </select>
+
+
+                <button
+                    class="compliment-main-btn"
+                    onclick="giveCompliment()"
+                >
+                    Reveal My Compliment
+                    <span>→</span>
+                </button>
+
+
+                <div class="button-divider">
+                    <span>OR</span>
+                </div>
+
+
+                <button
+                    class="pickup-main-btn"
+                    onclick="startPickupLine()"
+                >
+                    Hit Me With a Pickup Line
+                    <span>✦</span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SCREEN 2: PICKUP QUESTION
+        ========================== -->
+
+        <section id="pickupScreen" class="screen pickup-screen">
+
+            <div class="brand">
+                <span>✦</span>
+                PICKUP LINE
+                <span>✦</span>
+            </div>
+
+            <h1 id="pickupQuestion">
+                Are you a light? 💡
+            </h1>
+
+            <p class="subtitle">
+                Be honest... we won't judge 😏
+            </p>
+
+
+            <div class="pickup-options">
+
+                <button onclick="answerPickup()">
+                    YES
+                </button>
+
+                <button onclick="answerPickup()">
+                    NO
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SCREEN 3: REVEAL
+        ========================== -->
+
+        <section id="complimentScreen" class="screen compliment-screen">
+
+            <div class="sparkle">
+                ✦
+            </div>
+
+
+            <p class="hello" id="helloText">
+                Hey there ✦
+            </p>
+
+
+            <div class="compliment-card">
+
+                <span class="quote-mark">“</span>
+
+                <p id="complimentText"></p>
+
+                <span class="quote-mark closing">”</span>
+
+            </div>
+
+
+            <button
+                class="another-btn"
+                onclick="giveAnotherCompliment()"
+            >
+                Another one ✦
+            </button>
+
+
+            <button
+                class="back-btn"
+                onclick="goBack()"
+            >
+                ← Start again
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
